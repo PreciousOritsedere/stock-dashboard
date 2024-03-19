@@ -1,0 +1,12 @@
+[
+  { "id": 1, "symbol": "AAPL", "price": 150.45 },
+  { "id": 2, "symbol": "GOOGL", "price": 2735.12 },
+  { "id": 3, "symbol": "MSFT", "price": 295.01 },
+  { "id": 4, "symbol": "AMZN", "price": 3300.0 },
+  { "id": 5, "symbol": "FB", "price": 275.36 },
+  { "id": 6, "symbol": "TSLA", "price": 800.51 },
+  { "id": 7, "symbol": "BRK.A", "price": 412000.0 },
+  { "id": 8, "symbol": "V", "price": 210.25 },
+  { "id": 9, "symbol": "JNJ", "price": 165.22 },
+  { "id": 10, "symbol": "WMT", "price": 140.85 }
+]
