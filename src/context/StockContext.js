@@ -11,7 +11,7 @@ export function StockProvider({ children }) {
     const mockWebSocket = {
       onmessage: null, 
       send: (data) => {
-        console.log("Mock send:", data);
+        // console.log("Mock send:", data);
         // Simulate a response after a delay
         setTimeout(() => {
           if (mockWebSocket.onmessage) {
@@ -25,9 +25,9 @@ export function StockProvider({ children }) {
       },
     };
 
-    // Define what happens when the onmessage event is triggered
+   
     mockWebSocket.onmessage = (event) => {
-      console.log("Mock onmessage event:", event.data);
+    //   console.log("Mock onmessage event:", event.data);
       // Update the stock price in context with the simulated data
       const message = JSON.parse(event.data);
       setStocks((prevStocks) =>
@@ -45,7 +45,7 @@ export function StockProvider({ children }) {
         prevStocks.map((stock) => {
           const randomIncrement = [10, 20, 30][Math.floor(Math.random() * 3)];
           const newPrice = (stock.price + randomIncrement).toFixed(2);
-          console.log(`Simulated new price for ${stock.symbol}: $${newPrice}`);
+        //   console.log(`Simulated new price for ${stock.symbol}: $${newPrice}`);
           return { ...stock, price: parseFloat(newPrice) };
         })
       );
