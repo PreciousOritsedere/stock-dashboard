@@ -1,4 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Stock Dashboard
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), designed to display real-time stock prices. The application showcases the use of WebSockets for real-time data updates, SEO optimizations, and performance enhancements.
+
+## Getting Started
+
+First, install the dependencies:
+
+````bash
+npm install
+# or
+yarn install
+
 
 ## Getting Started
 
@@ -12,29 +24,35 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
+````
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Project Structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+This section details the key components and architectural decisions made in the development of the Stock Dashboard application.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## State Management
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+I used React's Context API for global state management, encapsulated within the `StockContext`. This context maintains the state of stock data across the application, ensuring that components such as the stock list and details pages can access and display the latest stock information. The `StockContext` is defined in `StockContext.js` and provides a structured way to simulate real-time data updates and share state efficiently between components without prop-drilling.
 
-## Learn More
+## Real-time Updates
 
-To learn more about Next.js, take a look at the following resources:
+As per the requirements of the task for this application, I made use of the ws library to implement Websocket for real-time tracking in order to provide simulated live updates of stock prices to the users. I achieved through a mock WebSocket connection established in the `StockContext`. The mock WebSocket, is defined within `StockContext.js`, it periodically updates the prices of stocks in the state, thereby emulating a live data feed environment. This approach allows for the demonstration of real-time data flow without the need for an actual backend service.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## SEO and Performance Optimizations
+As per the requirements of the task for this application, I also incorporated several SEO and performance optimization strategies to enhance user experience and search engine rankings such as;
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+ **Dynamic Meta Tags:** I dynamically updates the  Stock detail page   <title> and <meta name="description"> tags based on the specific stock being viewed. This is implemented within the Layout component and ensures that each stock detail page is uniquely identifiable by search engines.
 
-## Deploy on Vercel
+**Image Optimization:** I used next/image for image optimization, automatically resizing and optimizing images for different devices and resolutions.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Server-Side Rendering (SSR) and Static Generation (SSG):** utilized SSG via getStaticProps for fast loading times and SEO benefits. For the Stock detail pages, I  leverage on SSR through getServerSideProps to fetch and display up-to-date stock information on each request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Assumptions and Implementations
+# Mock Data
+I created some mock data for stock information (stockData.json) and historical price data (graphData.json). This data simulates a database of stocks and their price movements over time, providing a foundation for the application's features without relying on external APIs.
+
+By incorporating these strategies, the Stock Dashboard application delivers a robust user experience, demonstrating real-time data updates, SEO-friendly pages, and optimized performance.
+
+
